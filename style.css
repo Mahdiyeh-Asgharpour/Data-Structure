@@ -1,0 +1,45 @@
+body {
+    background: rgb(227, 221, 132);
+    background: radial-gradient(circle, rgba(227, 221, 132, 1) 0%, rgba(230, 123, 145, 1) 100%);
+    justify-content: center;
+    text-align: center;
+}
+
+.ground {
+    width: 50%;
+    margin-top: 30%;
+}
+
+.a,
+.b,
+.c {
+    border-left: 2px solid black;
+    height: 350px;
+    position: absolute;
+    top: 15%;
+}
+
+.a {
+    left: 30%;
+    margin-left: -3px;
+}
+
+.b {
+    left: 50%;
+    margin-left: -3px;
+}
+
+.c {
+    left: 70%;
+    margin-left: -3px;
+}
+
+.name {
+    display: inline;
+    font-size: xx-large;
+}
+
+a {
+    margin: 9.3%;
+    background-color: none;
+}
