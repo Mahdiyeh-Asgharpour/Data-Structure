@@ -1,4 +1,9 @@
 var n = prompt("n:");
+
+for (let i = n; i >= 1; i--) {
+    const divs = document.getElementById("a");
+    divs.innerHTML += `<span style='border:10px solid white; background-color:white; color:black;'>${i}</span> <br><br>`;
+}
 var A, B, C;
 var m = 2 * n;
 
