@@ -6,10 +6,19 @@ const m = 2 * n;
 document.body.addEventListener("keypress", Ex_Hanoi);
 
 for (let i = 0; i < n; i++) {
-    const divs = document.getElementById("a");
-    const a = divs.innerHTML += `<span style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
+    const divsa = document.getElementById("a");
+    const a = divsa.innerHTML += `<span style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
    '>${n-i}</span> <br><br>`;
     A[i] = a;
+    const divsb = document.getElementById("b");
+    const b = divsb.innerHTML += `<span style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
+   '>${Number(2*n)-Number(i)}</span> <br><br>`;
+    B[i] = b;
+    const divsc = document.getElementById("c");
+    const c = divsc.innerHTML += `<span style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
+   '>${Number(3*n)-Number(i)}</span> <br><br>`;
+    C[i] = c;
+
 }
 
 function timer(q) {
