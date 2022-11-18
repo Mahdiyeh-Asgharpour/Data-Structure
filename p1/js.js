@@ -1,23 +1,17 @@
 const n = prompt("n:");
-const A = [];
-const B = [];
-const C = [];
-const m = 2 * n;
+const m = 3 * n;
 document.body.addEventListener("keypress", Ex_Hanoi);
 
 for (let i = 0; i < n; i++) {
     const divsa = document.getElementById("a");
-    const a = divsa.innerHTML += `<span style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
-   '>${n-i}</span> <br><br>`;
-    A[i] = a;
+    const a = divsa.innerHTML += `<span id='box-${Number(n - i)}' style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
+   '>${Number(n - i)}</span> <br><br>`;
     const divsb = document.getElementById("b");
-    const b = divsb.innerHTML += `<span style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
-   '>${Number(2*n)-Number(i)}</span> <br><br>`;
-    B[i] = b;
+    const b = divsb.innerHTML += `<span id='box-${Number((2 * n) - i)}' style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
+   '>${Number((2 * n) - i)}</span> <br><br>`;
     const divsc = document.getElementById("c");
-    const c = divsc.innerHTML += `<span style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
-   '>${Number(3*n)-Number(i)}</span> <br><br>`;
-    C[i] = c;
+    const c = divsc.innerHTML += `<span id='box-${Number((3 * n) - i)}' style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
+   '>${Number((3 * n) - i)}</span> <br><br>`;
 
 }
 
@@ -28,7 +22,7 @@ function timer(q) {
         inp.innerHTML = ` <input id="Stop" onclick="stop()" type="button" value="Stop">
     <input id="Continue" type="button" value="Continue">
     <input id="From-the-beginning" onclick="reload()" type="button" value="From the beginning">
-    <input id="At-the-end" type="button" value="At the end">`;
+    <input id="At-the-end" onclick="end()" type="button" value="At the end">`;
 
 
     } else if (q == 1)
@@ -49,44 +43,46 @@ function stop() {
 
 }
 
+function end() {
+    document.getElementById("c").remove();
+    for (let i = m; i >= 1; i--) {
+        var moc = document.getElementById(`box-${i}`);
 
-
-function move(index) {
-    if (index == 0) {
-        for (let i = 0; i < n; i++) {
-            C[i] = A[i];
-            A.splice(i, 1);
-        }
-
-
-
-    } else {
-        for (let i = 0; i < n; i++) {
-            C[i] = B[i];
-            B.splice(i, 1);
-        }
+        document.getElementById("c").innerHTML += moc;
 
     }
 
 }
 
+
+
+function move(p1, p2) {
+    document.getElementById(`${p2}`).innerHTML += document.getElementById(`${p1}`);
+    document.getElementById(`${p1}`).remove;
+
+
+}
+
 function Hanoi(A, B, C, n) {
-    if (n == 1) move(0);
+    if (n == 1) move(a, c);
     else {
         Hanoi(A, C, B, n - 1);
-        move(0);
+        move(a, c);
         Hanoi(B, A, C, n - 1);
     }
 }
 
 function Ex_Hanoi(A, B, C, n) {
     if (n == 1) {
-        move(0);
-        move(1);
+        move(c, b);
+        move(a, c);
+        move(b, a);
+        move(b, c);
+        move(a, c);
     } else {
         Ex_Hanoi(A, B, C, n - 1);
         Hanoi(C, A, B, m - 2);
-        move(0);
+        move(a, c);
         Hanoi(B, A, C, m - 1);
     }
 }
