@@ -78,3 +78,10 @@ main {
     font-style: italic;
     cursor: pointer;
 }
+
+span {
+    border: 10px solid #FFF7CA;
+    border-radius: 100px;
+    color: #F3368D;
+    background-color: #FFF7CA;
+}

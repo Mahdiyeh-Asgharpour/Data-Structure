@@ -4,14 +4,11 @@ document.body.addEventListener("keypress", Ex_Hanoi);
 
 for (let i = 0; i < n; i++) {
     const divsa = document.getElementById("a");
-    const a = divsa.innerHTML += `<span id='box-${Number(n - i)}' style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
-   '>${Number(n - i)}</span> <br><br>`;
+    const a = divsa.innerHTML += `<span id='box-${Number(n - i)}'>${Number(n - i)}</span> <br><br>`;
     const divsb = document.getElementById("b");
-    const b = divsb.innerHTML += `<span id='box-${Number((2 * n) - i)}' style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
-   '>${Number((2 * n) - i)}</span> <br><br>`;
+    const b = divsb.innerHTML += `<span id='box-${Number((2 * n) - i)}'>${Number((2 * n) - i)}</span> <br><br>`;
     const divsc = document.getElementById("c");
-    const c = divsc.innerHTML += `<span id='box-${Number((3 * n) - i)}' style='border:10px solid #FFF7CA; border-radius:100px; color:#F3368D; background-color:#FFF7CA;
-   '>${Number((3 * n) - i)}</span> <br><br>`;
+    const c = divsc.innerHTML += `<span id='box-${Number((3 * n) - i)}' >${Number((3 * n) - i)}</span> <br><br>`;
 
 }
 
@@ -44,13 +41,14 @@ function stop() {
 }
 
 function end() {
-    document.getElementById("c").remove();
-    for (let i = m; i >= 1; i--) {
-        var moc = document.getElementById(`box-${i}`);
+    for (let j = m - n; j >= 1; j--) {
+        var moc = document.getElementById(`box-${j}`).innerText;
 
-        document.getElementById("c").innerHTML += moc;
+        document.getElementById("c").innerHTML += `<span>${moc}</span><br><br>`;
 
     }
+    document.getElementById("a").remove();
+    document.getElementById("b").remove();
 
 }
 
