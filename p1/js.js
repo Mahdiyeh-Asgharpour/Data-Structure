@@ -4,16 +4,17 @@ document.body.addEventListener("keypress", Ex_Hanoi);
 
 for (let i = 0; i < n; i++) {
     const divsa = document.getElementById("a");
-    const a = divsa.innerHTML += `<span id='box-${Number(n - i)}'>${Number(n - i)}</span> <br><br>`;
+    const a = divsa.innerHTML += `<span id='box-${Number(n - i)}'>${Number(n - i)}</span> <br>`;
     const divsb = document.getElementById("b");
-    const b = divsb.innerHTML += `<span id='box-${Number((2 * n) - i)}'>${Number((2 * n) - i)}</span> <br><br>`;
+    const b = divsb.innerHTML += `<span id='box-${Number((2 * n) - i)}'>${Number((2 * n) - i)}</span> <br>`;
     const divsc = document.getElementById("c");
-    const c = divsc.innerHTML += `<span id='box-${Number((3 * n) - i)}' >${Number((3 * n) - i)}</span> <br><br>`;
+    const c = divsc.innerHTML += `<span id='box-${Number((3 * n) - i)}' >${Number((3 * n) - i)}</span> <br>`;
 
 }
 
 function timer(q) {
     const inp = document.getElementById("input1");
+
     if (q == 0) {
         const time = prompt("time limit:");
         inp.innerHTML = ` <input id="Stop" onclick="stop()" type="button" value="Stop">
@@ -44,7 +45,7 @@ function end() {
     for (let j = m - n; j >= 1; j--) {
         var moc = document.getElementById(`box-${j}`).innerText;
 
-        document.getElementById("c").innerHTML += `<span>${moc}</span><br><br>`;
+        document.getElementById("c").innerHTML += `<span>${moc}</span><br>`;
 
     }
     document.getElementById("a").remove();

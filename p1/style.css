@@ -9,12 +9,13 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 50px;
 }
 
 .peg {
     position: relative;
     border-left: 2px solid #2F2B2B;
-    height: 350px;
+    height: 600px;
 }
 
 #a,
@@ -36,28 +37,35 @@ main {
     width: 52vw;
     height: 5px;
     border: none;
-    background: #FFF7CA;
-    margin: 0;
+    background: #fff7ca6d;
+    margin-top: 730px;
+    position: absolute;
 }
 
 .title {
-    position: absolute;
-    bottom: -100px;
+    bottom: -150px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 3rem;
     color: #2F2B2B;
+    position: absolute;
 }
 
 .input1 {
-    margin-top: 80px;
     margin-right: -50px;
     position: relative;
     display: block;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .input2 {
-    margin-bottom: 30px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #At-the-end,
@@ -80,8 +88,18 @@ main {
 }
 
 span {
-    border: 10px solid #FFF7CA;
-    border-radius: 100px;
+    border: 5px solid #FFF7CA;
+    border-radius: 1000px;
     color: #F3368D;
     background-color: #FFF7CA;
+}
+
+#titlea {
+    display: block;
+    padding-right: 50vw;
+}
+
+#titlec {
+    display: block;
+    padding-left: 50vw;
 }
