@@ -2,48 +2,69 @@ package sakhteman1;
 
 import java.util.Scanner;
 
+import static java.lang.Math.pow;
+
 public class matris {
-    Scanner a=new Scanner(System.in);
-    int n=a.nextInt();
-    int[][]matris =new int[n][n];
-    int[][]k =new int[n-1][n-1];
-    int s=0,w=1;
-    public void get(int n){
-        for (int i=0;i<n;i++)
-            for (int j=0;j<n;j++)
-                matris[i][j]=a.nextInt();
-    }
-    public void getk(int n){
-        for (int i=0;i<n-1;i++)
-            for (int j=0;j<n-1;j++)
-                matris[i][j]=a.nextInt();
-    }
+    int n;
+    int[][] matrix = new int[n][n];
 
-
-
-    public double det(int[][] matris, int n){
-        if (n==1)
-            return matris[1][1];
-        else
-        {
-            for (int j=0;j<n;j++){
-                for (int ii=2;ii<=n;ii++){
-                    for (int jj=0;jj<n;jj++){
-                        if (jj<j) k[ii-1][jj]=matris[ii][jj];
-                        if (jj>j){
-                            k[ii-1][jj-1]=matris[ii][jj];
-
-                        }
-
-                    }
-                    s=s+(matris[1][j]*w*det(k[n-1][n-1],n-1));
-                    w=-1*w;
-                    return s;
-                }
+     static void inter(int matrix[][], int n) {
+        Scanner b = new Scanner(System.in);
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                matrix[i][j] = b.nextInt();
 
             }
         }
-        System.out.println(s);
     }
 
+    static void b(int matrix2[][], int matrix[][], int i, int n) {
+        int q = 0, w = 0;
+        for (int j = 1; j < n; j++) {
+            for (int k = 1; k < n; k++) {
+                if (k == i) {
+                    continue;
+                }
+                matrix2[q][w] = matrix[j][k];
+                w++;
+                if (w == n - 1) {
+                    q++;
+                    w = 0;
+                }
+            }
+        }
+    }
+
+     static  int det(int matrix[][], int n) {
+        int temp = 0;
+        int sum = 0;
+        int[][] matrix2 = new int[n][n];
+        if (n == 2) {
+            sum = matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
+            return  sum;
+        } else {
+            for (int i = 0; i < n; i++) {
+                b(matrix2, matrix, i, n);
+                sum += matrix[0][1] * pow(-1,i) * det(matrix2, n - 1);
+
+            }
+        }
+        return sum;
+
+
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println("n:");
+        Scanner a=new Scanner(System.in);
+        int n =a.nextInt();
+        int[][] matrix = new int[n][n];
+        inter(matrix,n);
+        int det=det(matrix,n);
+        System.out.println(det);
+
+
+
+    }
 }
