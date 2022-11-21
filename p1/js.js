@@ -42,14 +42,13 @@ function stop() {
 }
 
 function end() {
-    for (let j = m - n; j >= 1; j--) {
-        var moc = document.getElementById(`box-${j}`).innerText;
-
-        document.getElementById("c").innerHTML += `<span>${moc}</span><br>`;
-
-    }
     document.getElementById("a").remove();
     document.getElementById("b").remove();
+    document.getElementById("c").innerHTML = `<div></div>`;
+    for (let j = 0; j <= m; j++) {
+        document.getElementById("c").innerHTML += `<span>${Number((m) - j)}</span> <br>`;
+
+    }
 
 }
 
