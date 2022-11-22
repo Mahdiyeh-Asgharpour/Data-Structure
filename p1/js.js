@@ -2,13 +2,19 @@ const n = prompt("n:");
 const m = 3 * n;
 document.body.addEventListener("keypress", Ex_Hanoi);
 
-for (let i = 0; i < n; i++) {
-    const divsa = document.getElementById("a");
-    const a = divsa.innerHTML += `<span id='box-${Number(n - i)}'>${Number(n - i)}</span> <br>`;
-    const divsb = document.getElementById("b");
-    const b = divsb.innerHTML += `<span id='box-${Number((2 * n) - i)}'>${Number((2 * n) - i)}</span> <br>`;
-    const divsc = document.getElementById("c");
-    const c = divsc.innerHTML += `<span id='box-${Number((3 * n) - i)}' >${Number((3 * n) - i)}</span> <br>`;
+for (let i = m; i > 0; i--) {
+    if (i % 3 == 1) {
+        const divsa = document.getElementById("a");
+        const a = divsa.innerHTML += `<span id='box-${Number(i)}'>${Number( i)}</span> <br>`;
+    } else if (i % 3 == 2) {
+        const divsb = document.getElementById("b");
+        const b = divsb.innerHTML += `<span id='box-${Number(i)}'>${Number(i)}</span> <br>`;
+    } else {
+        const divsc = document.getElementById("c");
+        const c = divsc.innerHTML += `<span id='box-${Number(i)}' >${Number(i)}</span> <br>`;
+
+    }
+
 
 }
 
@@ -45,7 +51,7 @@ function end() {
     document.getElementById("a").remove();
     document.getElementById("b").remove();
     document.getElementById("c").innerHTML = `<div></div>`;
-    for (let j = 0; j <= m; j++) {
+    for (let j = 0; j < m; j++) {
         document.getElementById("c").innerHTML += `<span>${Number((m) - j)}</span> <br>`;
 
     }
