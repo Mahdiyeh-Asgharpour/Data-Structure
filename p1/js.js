@@ -7,13 +7,18 @@ let index = 0;
 for (let i = m; i > 0; i--) {
     if (i % 3 == 1) {
         const divsa = document.getElementById("a");
-        const a = divsa.innerHTML += `<span id='box-${Number(i)}'>${Number( i)}</span> <br>`;
+        const a = divsa.innerHTML += `<span id='box-${Number(i)}' style=' padding-right:${Number(m- i)}px; padding-left:${Number(m- i)}px;'>${Number( i)}</span> <br>`;
     } else if (i % 3 == 2) {
         const divsb = document.getElementById("b");
-        const b = divsb.innerHTML += `<span id='box-${Number(i)}'>${Number(i)}</span> <br>`;
+        const b = divsb.innerHTML += `<span id='box-${Number(i)}' style=' padding-right:${Number(m- i)}px; padding-left:${Number(m- i)}px;'>${Number(i)}</span> <br>`;
     } else {
         const divsc = document.getElementById("c");
-        const c = divsc.innerHTML += `<span id='box-${Number(i)}' >${Number(i)}</span> <br>`;
+        const c = divsc.innerHTML += `<span id='box-${Number(i)}' style=' padding-right:${Number(m- i)}px; padding-left:${Number(m- i)}px;'>${Number(i)}</span> <br>`;
+
+    }
+    if (i >= 10) {
+        document.getElementById(`box-${i}`).style.paddingRight = Number(m - i - 5);
+        document.getElementById(`box-${i}`).style.paddingLeft = Number(m - i - 5);
 
     }
 
@@ -53,10 +58,15 @@ function end() {
     document.getElementById("a").remove();
     document.getElementById("b").remove();
     document.getElementById("c").innerHTML = `<div></div>`;
-    for (let j = 0; j < m; j++) {
-        document.getElementById("c").innerHTML += `<span>${Number((m) - j)}</span> <br>`;
+    for (let j = m; j > 0; j--) {
+        document.getElementById("c").innerHTML += `<span id='box-${j}' style=' padding-right:${Number(m- j)}px; padding-left:${Number(m- j)}px;'>${Number( j)}</span> <br>`;
+        if (j >= 10) {
+            document.getElementById(`box-${j}`).style.paddingRight = Number(m - j - 5);
+            document.getElementById(`box-${j}`).style.paddingLeft = Number(m - j - 5);
 
+        }
     }
+
 
 }
 
