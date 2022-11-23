@@ -105,7 +105,7 @@ function Ex_Hanoi(a, b, c, n) {
     } else {
         Ex_Hanoi(a, b, c, n - 1);
         Hanoi(c, a, b, m - 2);
-        move(a, c);
+        movetomove(a, c);
         Hanoi(b, a, c, m - 1);
     }
 }
