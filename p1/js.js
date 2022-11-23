@@ -1,6 +1,8 @@
 const n = prompt("n:");
 const m = 3 * n;
-document.body.addEventListener("keypress", Ex_Hanoi);
+var move = [];
+let index = 0;
+//document.body.addEventListener("keypress", Ex_Hanoi());
 
 for (let i = m; i > 0; i--) {
     if (i % 3 == 1) {
@@ -30,7 +32,7 @@ function timer(q) {
 
 
     } else if (q == 1)
-        inp.innerHTML = `<input id="Click" type="button" value="Click"> `;
+        inp.innerHTML = `<input id="Click" onclick="click()" type="button" value="Click"> `;
 
 
 }
@@ -58,35 +60,52 @@ function end() {
 
 }
 
+function click() {
+    addEventListener("click", function run() { move[index]; });
+    index++;
+
+}
+
+function movetomove(p1, p2) {
+    move[index] = moves(p1, p2);
+    index++;
+
+}
 
 
-function move(p1, p2) {
-    document.getElementById(`${p2}`).innerHTML += document.getElementById(`${p1}`);
-    document.getElementById(`${p1}`).remove;
+function moves(p1, p2) {
+    for (let i = m; i > 0; i--) {
+        if (document.getElementById(`box-${i}`) != null) {
+            document.getElementById(`${p2}`).innerHTML += document.getElementById(`box-${i}`);
+            document.getElementById(`${p1}`).remove(getElementById(`box-${i}`));
+        }
+
+    }
+
 
 
 }
 
-function Hanoi(A, B, C, n) {
-    if (n == 1) move(a, c);
+function Hanoi(a, b, c, n) {
+    if (n == 1) movetomove(a, c);
     else {
-        Hanoi(A, C, B, n - 1);
-        move(a, c);
-        Hanoi(B, A, C, n - 1);
+        Hanoi(a.c.b, n - 1);
+        movetomove(a, c);
+        Hanoi(b, a, c, n - 1);
     }
 }
 
-function Ex_Hanoi(A, B, C, n) {
+function Ex_Hanoi(a, b, c, n) {
     if (n == 1) {
-        move(c, b);
-        move(a, c);
-        move(b, a);
-        move(b, c);
-        move(a, c);
+        movetomove(c, b);
+        movetomove(a, c);
+        movetomove(b, a);
+        movetomove(b, c);
+        movetomove(a, c);
     } else {
-        Ex_Hanoi(A, B, C, n - 1);
-        Hanoi(C, A, B, m - 2);
+        Ex_Hanoi(a, b, c, n - 1);
+        Hanoi(c, a, b, m - 2);
         move(a, c);
-        Hanoi(B, A, C, m - 1);
+        Hanoi(b, a, c, m - 1);
     }
 }
