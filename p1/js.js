@@ -2,7 +2,8 @@ const n = prompt("n:");
 const m = 3 * n;
 var move = [];
 let index = 0;
-//document.body.addEventListener("keypress", Ex_Hanoi());
+
+
 
 for (let i = m; i > 0; i--) {
     if (i % 3 == 1) {
@@ -24,16 +25,19 @@ for (let i = m; i > 0; i--) {
 
 
 }
+document.body.addEventListener("click", Ex_Hanoi());
 
 function timer(q) {
     const inp = document.getElementById("input1");
 
     if (q == 0) {
-        const time = prompt("time limit:");
+        var time = prompt("time limit:");
         inp.innerHTML = ` <input id="Stop" onclick="stop()" type="button" value="Stop">
-    <input id="Continue" type="button" value="Continue">
+    <input id="Continue" type="button" onclick="Continue()" value="Continue">
     <input id="From-the-beginning" onclick="reload()" type="button" value="From the beginning">
     <input id="At-the-end" onclick="end()" type="button" value="At the end">`;
+        clicktime();
+
 
 
     } else if (q == 1)
@@ -70,8 +74,24 @@ function end() {
 
 }
 
+function clicktime() {
+    setTimeout(move[index], Number(time * 1000));
+    index++;
+
+}
+
+function Continue() {
+    document.getElementById("Continue").addEventListener("click", function run() {
+        setTimeout(move[index + 1], Number(time * 1000));
+
+    });
+
+}
+
 function click() {
-    addEventListener("click", function run() { move[index]; });
+    addEventListener("click", function run() {
+        move[index];
+    });
     index++;
 
 }
