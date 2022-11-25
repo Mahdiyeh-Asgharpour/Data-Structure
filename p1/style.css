@@ -8,7 +8,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     margin-top: 50px;
 }
 
@@ -92,6 +92,7 @@ span {
     border-radius: 1000px;
     color: #F3368D;
     background-color: #FFF7CA;
+    display: block;
 }
 
 #titlea {
