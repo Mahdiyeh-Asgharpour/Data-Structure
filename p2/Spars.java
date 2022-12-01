@@ -2,187 +2,110 @@ package sakhteman2;
 
 import java.util.Scanner;
 
+
+
 public class Spars {
+
     int[][] array;
-    int[][] data;
-    int n;
-    int[][] b;
-    Spars bb = new Spars(b, n);
-    Spars spars = new Spars(array, n);
+    static int r1, c1, r2, c2;
+    int[][] matrix1 = new int[r1][c1];
+    int[][] matrix2 = new int[r2][c2];
 
-    public Spars(int[][] array, int n) {
+    public Spars(int[][] array) {
         this.array = array;
-        this.n = n;
     }
 
-    public void daata(int i, int j, int q, int nzero) {
-        for (int k = 0; k < nzero; k++) {
-            data[k][0] = i;
-            data[k][1] = j;
-            data[k][2] = q;
-            //array
-        }
-
-
-    }
-
-    public int[][] trans() {
+    public void input(int n) {
         for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++) {
-                b[i][j] = 0;
-            }
+            for (int j = 0; j < n; j++)
+                array[i][j] = 0;
+    }
 
-        for (int i = 1; i < b.length; i++) {
-            bb.data[i][0] = spars.data[i][1];
-            bb.data[i][1] = spars.data[i][0];
-            bb.data[i][2] = spars.data[i][2];
+    public void data(int i, int j, int q) {
+        array[i][j] = q;
+    }
+
+    public void trans(int n) {
+        int[][] b = new int[n][n];
+        Spars ans0 = new Spars(b);
+        ans0.input(n);
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
+                if (array[i][j] != 0)
+                    b[j][i] = array[i][j];
+        System.out.println(b.toString());
+    }
+
+    public static void protuct(int[][] matrix1, int[][] matrix2) {
+        int[][] protuct = new int[r1][c2];
+        if (r2 == c1) {
+            for (int i = 0; i < r1; i++)
+                for (int j = 0; j < c2; j++)
+                    for (int k = 0; k < r2; k++) {
+                        protuct[i][j] = matrix1[i][k] * matrix2[k][j];
+                    }
+
         }
-        return b;
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c2; j++) {
+                System.out.println(protuct[i][j]);
+            }
+            System.out.println("\n");
+        }
     }
-    public int[][] protuct(){
-        int[][] protuct;
-      if (row2==col1){
-          protuct=new int[row1][col2];
-          for (int i=0;i<row1;i++)
-              for (int j=0;j<col2;j++)
-                  for (int k=0;k<row2;k++){
-                      protuct[i][j]=array1[i][k]*array2[k][j];
-                  }
 
-      }return protuct[row1][col2];
-    }
     public static void main(String[] args) {
         Scanner a = new Scanner(System.in);
-
-        System.out.println("1.spurs");
-        System.out.println("2.protuct");
+        System.out.println("1.spurs,2.protuct");
         int answer = a.nextInt();
         if (answer == 1) {
-            int nzero;
             System.out.println("n matrix:");
             int n = a.nextInt();
             int[][] array = new int[n][n];
-            for (int i = 0; i < n; i++)
-                for (int j = 0; j < n; j++) {
-                    array[i][j] = 0;
-
-                }
-            System.out.println("number of values that isn't 0:");
-            nzero = a.nextInt();
-
-            while (n <= nzero) {
-                System.out.println("error please type number again:");
-                nzero = a.nextInt();
-
-            }
-
-            for (int k = 1; k <= nzero; k++) {
+            Spars ans = new Spars(array);
+            ans.input(n);
+            System.out.println("number of value that isn't 0:");
+            int not0 = a.nextInt();
+            for (int o = 0; o < not0; o++) {
                 System.out.println("row:");
-                int i = a.nextInt();
-                while (i > n) {
-                    System.out.println("error,row:");
-                    i = a.nextInt();
-                }
-                System.out.println("column:");
-                int j = a.nextInt();
-                while (j > n) {
-                    System.out.println("error,column:");
-                    j = a.nextInt();
-                }
-                System.out.println("value");
-                int q = a.nextInt();
-                array[i][j] = q;
-
-
-                spars.daata(i, j, q, nzero);
+                int row = a.nextInt();
+                System.out.println("col:");
+                int col = a.nextInt();
+                System.out.println("value:");
+                int value = a.nextInt();
+                ans.data(row, col, value);
+                ans.trans(n);
 
             }
-
-        } else if (answer == 2) {int nzero1;
-            System.out.println("row matrix1:");
+        } else if (answer == 2) {
+            System.out.println("matrix1:");
+            System.out.println("row");
             int row1 = a.nextInt();
-            System.out.println("col matrix1:");
-            int col1=a.nextInt();
-            int[][] array1 = new int[row1][col1];
+            System.out.println("col");
+            int col1 = a.nextInt();
+            int[][] matrix1 = new int[row1][];
             for (int i = 0; i < row1; i++)
                 for (int j = 0; j < col1; j++) {
-                    array1[i][j] =0;
-
+                    int input = a.nextInt();
+                    matrix1[i][j] = input;
                 }
-            System.out.println("number of values that isn't 0:");
-            nzero1 = a.nextInt();
-
-            while (row1 <= nzero1 && col1<=nzero1) {
-                System.out.println("error please type number again:");
-                nzero1 = a.nextInt();
-
-            }
-
-            for (int k = 1; k <= nzero1; k++) {
-                System.out.println("row:");
-                int i = a.nextInt();
-                while (i > row1) {
-                    System.out.println("error,row:");
-                    i = a.nextInt();
-                }
-                System.out.println("column:");
-                int j = a.nextInt();
-                while (j > col1) {
-                    System.out.println("error,column:");
-                    j = a.nextInt();
-                }
-                System.out.println("value");
-                int q = a.nextInt();
-                array1[i][j] = q;
-
-
-
-
-            }
-            int nzero2;
-            System.out.println("row matrix2:");
+            System.out.println("matrix2:");
+            System.out.println("row");
             int row2 = a.nextInt();
-            System.out.println("col matrix2:");
+            System.out.println("col");
             int col2 = a.nextInt();
+            int[][] matrix2 = new int[row2][];
 
-            int[][] array2 = new int[row2][col2];
             for (int i = 0; i < row2; i++)
                 for (int j = 0; j < col2; j++) {
-                    array2[i][j] = 0;
-
+                    int input = a.nextInt();
+                    matrix2[i][j] = input;
                 }
-            System.out.println("number of values that isn't 0:");
-            nzero2 = a.nextInt();
-
-            while (row2 <= nzero2 && col2<=nzero2) {
-                System.out.println("error please type number again:");
-                nzero2 = a.nextInt();
-
-            }
-
-            for (int k = 1; k <= nzero2; k++) {
-                System.out.println("row:");
-                int i = a.nextInt();
-                while (i >row2) {
-                    System.out.println("error,row:");
-                    i = a.nextInt();
-                }
-                System.out.println("column:");
-                int j = a.nextInt();
-                while (j >col2) {
-                    System.out.println("error,column:");
-                    j = a.nextInt();
-                }
-                System.out.println("value");
-                int q = a.nextInt();
-                array2[i][j] = q;
+            protuct(matrix1, matrix2);
 
 
-            }
-
-
-        } else System.out.println("error");
-
+        } else
+            System.out.println("error");
         // write your code here
     }
 }
