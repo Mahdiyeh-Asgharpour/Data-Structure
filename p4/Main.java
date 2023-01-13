@@ -1,64 +1,38 @@
-package sakhteman4;
+package DataStructure;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.util.Arrays;
 
 public class Main {
-
     public static void main(String[] args) {
-        //binary
-        int array[] = new int[]{36, 7, 0, 1, 24, 16, 13};
-        sort.binary(array);
-        System.out.println("-----------------------");
-        //bubble
+        // Tree
+        MyBinaryTree tree = new MyBinaryTree();
+        tree.insert(7);
+        tree.insert(4);
+        tree.insert(9);
+        tree.insert(1);
+        tree.insert(6);
+        tree.insert(8);
+        tree.insert(10);
 
-        int[] array1 = new int[]{16, 33, 245, 7, 9, 1, 3, 22};
-        sort.bubble(array1);
-        System.out.println("-----------------------");
+        tree.traversePreOrder();
+        System.out.println();
+        tree.traverseInOrder();
+        System.out.println();
+        tree.traverseLevelOrder();
 
-        //count
-        //range 0 to 9
-        int[] array2 = new int[]{0, 8, 6, 3, 7, 8, 1, 2, 6, 5, 4, 4, 1};
-        sort.count(array2);
-        System.out.println("-----------------------");
+        // Heap
+        MyHeap heap = new MyHeap(10);
+        heap.insert(10);
+        heap.insert(5);
+        heap.insert(17);
+        heap.insert(4);
+        heap.insert(22);
+        heap.remove();
+        System.out.println();
 
-        //insertion
-        int[] array3 = new int[]{0, 32, 27, 20, 17, 5, 4, 9, 1};
-        sort.inserton(array3);
-        System.out.println("-----------------------");
-
-        //quick
-        int[] array4 = new int[]{1, 8, 16, 23, 99, 45, 2, 20, 81, 9};
-        array4 = sort.quick(array4, 0, array4.length - 1);
-        for (int a : array4) {
-            System.out.println(a);
-            System.out.println("-----------------------");
-
-            //selection
-            int[] array5 = new int[]{45, 6, 7, 13, 2, 1, 22, 16};
-            sort.selectionSort(array5);
-
-
-        }
-        System.out.println("-----------------------");
+        // Sort
+        int[] arr = {10, 8, 16, 52, 95, 51};
+        MySort.insertionSort(arr);
+        System.out.println(Arrays.toString(arr));
     }
-    //binarytree
-    //addRecursive
-    private binarytree createBinaryTree() {
-        binarytree bt = new binarytree();
-
-        bt.add(6);
-        bt.add(4);
-        bt.add(8);
-        bt.add(3);
-        bt.add(5);
-        bt.add(7);
-        bt.add(9);
-
-        return bt;
-    }
-
-
 }
-
-
